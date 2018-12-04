@@ -1,7 +1,18 @@
+    ############################################
+    The dbus 1.8 branch has reached end-of-life.
+    ############################################
+
+There will probably be no more releases from this branch. However, OS
+distributions that still provide security support for a version based on
+it are invited to share backported fixes using the dbus-1.8 git branch:
+please contact the dbus maintainers for more information.
+
+------------------------------------------------------------------------
+
 D-Bus 1.8.24 (UNRELEASED)
 ==
 
-The fixes in this release are arguably security fixes, but if they
+The fixes since dbus 1.8.22 are arguably security fixes, but if they
 affect you, please take this opportunity to rethink how you are
 configuring dbus.
 
