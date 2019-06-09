@@ -1,7 +1,13 @@
-D-Bus 1.6.32 (UNRELEASED)
-==
+    ############################################
+    The dbus 1.6 branch has reached end-of-life.
+    ############################################
 
-...
+There will probably be no more releases from this branch. However, OS
+distributions that still provide security support for a version based on
+it are invited to share backported fixes using the dbus-1.6 git branch:
+please contact the dbus maintainers for more information.
+
+------------------------------------------------------------------------
 
 D-Bus 1.6.30 (2015-02-09)
 ==
