@@ -32,6 +32,14 @@ install:
       call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
     )
     
+  # Conan settings
+  - conan profile new default --detect
+  - conan profile update settings.compiler="Visual Studio" default
+  - conan profile update settings.compiler.version=%MSVC_VERSION% default
+  - conan profile update settings.arch=x86 default
+  - conan profile update settings.build_type=%configuration% default
+  - if "%platform%" == "x64" ( conan profile update settings.arch=x86_64 default )
+    
 before_build:
   - cd /D %APPVEYOR_BUILD_FOLDER%
   - mkdir build
