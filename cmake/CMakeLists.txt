@@ -20,6 +20,9 @@ if(CMAKE_MAJOR_VERSION GREATER 2)
     endif()
 endif()
 
+# BARCO: Find Expat
+include(GetConan)
+
 # detect version
 include(MacrosAutotools)
 autoinit(../configure.ac)

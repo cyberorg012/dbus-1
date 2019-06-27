@@ -1,0 +1,49 @@
+image: Visual Studio 2017
+
+platform: 
+  - x64
+  - x86
+
+configuration:
+  - Release
+
+environment:
+  MSVC_VERSION: 15
+
+install:
+  # Fetch and setup conan
+  - set PATH=%PATH%;%PYTHON%/Scripts/
+  - pip.exe --quiet install conan
+  - conan remote add barco %CONAN_URL%
+  - conan user -p %CONAN_API_KEY% -r barco %CONAN_USER%
+  
+  # Install Ninja
+  - set NINJA_URL="https://github.com/ninja-build/ninja/releases/download/v1.6.0/ninja-win.zip"
+  - appveyor DownloadFile %NINJA_URL% -FileName ninja.zip
+  - 7z x ninja.zip -oC:\projects\deps\ninja > nul
+  - del ninja.zip
+  - set PATH=C:\projects\deps\ninja;%PATH%
+  
+  # Select MSVC version
+  - if "%platform%" == "x64" (
+      call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+    )
+  - if "%platform%" == "x86" (
+      call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars32.bat"
+    )
+    
+before_build:
+  - cd /D %APPVEYOR_BUILD_FOLDER%
+  - mkdir build
+  - cd build
+  - cmake -G "CodeBlocks - Ninja" -DCMAKE_BUILD_TYPE=%configuration% ..\cmake
+
+build_script:
+  - cmake --build . --target all --config %configuration%
+
+test_script:
+   - cmake --build . --target test
+  
+after_test:
+  - cd /D %APPVEYOR_BUILD_FOLDER%
+  - conan.build.cmd
