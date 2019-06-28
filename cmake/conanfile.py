@@ -9,7 +9,7 @@ class DBusConan(ConanFile):
     options = {}
     default_options = ""
     generators = "cmake"
-    exports_sources = "*", "!build/*"
+    exports_sources = "../*", "!build/*"
     
     requires = (
         "libexpat/2.2.7.0@barco/healthcare"
@@ -17,7 +17,7 @@ class DBusConan(ConanFile):
     
     def build(self):
         cmake = CMake(self)
-        cmake.configure(source_folder=".")
+        cmake.configure(source_folder="cmake")
         cmake.build()
         cmake.install()
 
