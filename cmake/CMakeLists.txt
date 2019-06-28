@@ -364,6 +364,8 @@ endif("${sysname}" MATCHES ".*SOLARIS.*")
 
 if(NOT EXPAT_FOUND)
     message(FATAL_ERROR "expat not found!")
+else()
+    file(COPY ${EXPAT_INCLUDE_DIR}/../bin/expat.dll DESTINATION bin)
 endif(NOT EXPAT_FOUND)
 
 # all missing or hardcoded for now

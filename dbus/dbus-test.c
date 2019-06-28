@@ -41,6 +41,13 @@ die (const char *failure)
 static void
 check_memleaks (void)
 {
+  /* Begin Barco: saw intermittent memory leaks during unit testing that seems
+   * to suggest that not all dbus_free() are executed before unit test calls this
+   * function to check for outstanding allocations.  Adding a slight delay to 
+   * avoid spurious memory leaks being reported.  */
+  Sleep(1000);
+  /* End Barco */
+
   dbus_shutdown ();
 
   printf ("%s: checking for memleaks\n", "test-dbus");
