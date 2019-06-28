@@ -17,7 +17,7 @@ class DBusConan(ConanFile):
     
     def build(self):
         cmake = CMake(self)
-        cmake.configure(source_folder="..\cmake")
+        cmake.configure(source_folder=".")
         cmake.build()
         cmake.install()
 
