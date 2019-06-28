@@ -54,5 +54,5 @@ test_script:
    - cmake --build . --target test
   
 after_test:
-  - cd /D %APPVEYOR_BUILD_FOLDER%
+  - cd /D %APPVEYOR_BUILD_FOLDER%\cmake
   - conan.build.cmd
