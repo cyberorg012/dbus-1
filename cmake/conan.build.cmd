@@ -1,4 +1,3 @@
-cd cmake
 if "%APPVEYOR_REPO_TAG%" == "true" (
     conan create %APPVEYOR_BUILD_FOLDER% "%APPVEYOR_PROJECT_NAME%/%APPVEYOR_REPO_TAG_NAME:v=%@barco/healthcare"
     conan upload --remote barco --all %APPVEYOR_PROJECT_NAME%/%APPVEYOR_REPO_TAG_NAME:v=%@barco/healthcare
