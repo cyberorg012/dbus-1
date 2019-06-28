@@ -1,7 +1,7 @@
 from conans import ConanFile, CMake
 
 class DBusConan(ConanFile):
-    name = "DBusxpat"
+    name = "dbus"
     license = "Academic Free License version 2.1"
     url = "https://www.freedesktop.org/wiki/Software/dbus/"
     description = "D-Bus is a message bus system"
