@@ -15,7 +15,7 @@ environment:
 install:
   # Fetch and setup conan
   - set PATH=%PATH%;%PYTHON%/Scripts/
-  - pip.exe --quiet install conan
+  - pip3.exe --quiet install conan
   - conan remote add barco %CONAN_URL%
   - conan user -p %CONAN_API_KEY% -r barco %CONAN_USER%
   
